@@ -11,7 +11,7 @@ const wrapper = document.querySelector(".container"),
 
 
 let easing = "cubic-bezier(0.23, 1, 0.32, 1)",
-    duration = "0.3s",
+    duration = "0.15s",
     lastScrollY = window.scrollY,
     pos = 0;
 
