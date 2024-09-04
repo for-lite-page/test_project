@@ -1,7 +1,7 @@
 (function() {
     const settings = {
         animationDuration: 300, // Продолжительность анимации в миллисекундах
-        stepSize: 1200, // Размер шага прокрутки
+        stepSize: 12000, // Размер шага прокрутки
     };
 
     let isScrolling = false;
