@@ -10,8 +10,8 @@ const wrapper = document.querySelector(".container"),
     target = document.getElementsByTagName("body")[0];
 
 
-let easing = "cubic-bezier(0.23, 1, 0.32, 1)",
-    duration = "0.15s",
+let easing = "cubic-bezier(0.23, 0.5, 0.32, 0.5)",
+    duration = "0.4s",
     lastScrollY = window.scrollY,
     pos = 0;
 
