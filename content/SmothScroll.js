@@ -1,4 +1,3 @@
-//Momentum Scrolling
 const requestAnimationFrame =
     window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -9,9 +8,8 @@ const requestAnimationFrame =
 const wrapper = document.querySelector(".container"),
     target = document.getElementsByTagName("body")[0];
 
-
-let easing = "cubic-bezier(0.23, 0.5, 0.32, 0.5)",
-    duration = "0.4s",
+let easing = "cubic-bezier(0.25, 0.46, 0.45, 0.94)", // Более отзывчивая функция
+    duration = "0.1s", // Уменьшенная длительность
     lastScrollY = window.scrollY,
     pos = 0;
 
@@ -29,6 +27,7 @@ const init = () => {
     wrapper.style.zIndex = "2";
     wrapper.style.display = "flex";
     wrapper.style.backfaceVisibility = "hidden";
+    wrapper.style.willChange = "transform"; // Добавляем will-change для оптимизации
 
     loop();
 };
@@ -41,14 +40,11 @@ const onScroll = scrollY => {
 const loop = () => {
     let scrollY = window.scrollY;
 
-    if (lastScrollY === scrollY) {
-        requestAnimationFrame(loop);
-        return;
-    } else {
+    if (lastScrollY !== scrollY) {
         lastScrollY = scrollY;
         onScroll(scrollY);
-        requestAnimationFrame(loop);
     }
+    requestAnimationFrame(loop);
 };
 
 init();
