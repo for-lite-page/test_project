@@ -1,69 +1,69 @@
 (function() {
-    var settings = {
-        frameRate: 150,            // Частота кадров для анимации
-        animationTime: 400,        // Время анимации в миллисекундах
-        stepSize: 100,             // Размер шага прокрутки
-        pulseAlgorithm: true,      // Использовать алгоритм импульса
-        pulseScale: 4,             // Масштаб импульса
-        pulseNormalize: 1          // Нормализация импульса
+    const settings = {
+        animationDuration: 400, // Продолжительность анимации в миллисекундах
+        stepSize: 100, // Размер шага прокрутки
     };
 
-    var isScrolling = false;
-    var scrollTimeout;
-    var scrollEvents = [];
-    var root = document.documentElement;
+    let isScrolling = false;
+    let startX, startY, startTime;
 
-    // Обработчик прокрутки
-    function handleScroll(target, deltaX, deltaY) {
-        if (!isScrolling) {
-            isScrolling = true;
-            requestAnimationFrame(function() {
-                applyScroll(target, deltaX, deltaY);
+    // Функция плавной прокрутки
+    function smoothScroll(target, deltaX, deltaY) {
+        if (isScrolling) return;
+
+        isScrolling = true;
+
+        const startScrollTop = target.scrollTop;
+        const startScrollLeft = target.scrollLeft;
+        const startTime = performance.now();
+        const duration = settings.animationDuration;
+
+        function animateScroll(currentTime) {
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1); // Нормализованный прогресс (от 0 до 1)
+            const easing = easeOutQuad(progress);
+
+            target.scrollTop = startScrollTop + deltaY * easing;
+            target.scrollLeft = startScrollLeft + deltaX * easing;
+
+            if (progress < 1) {
+                requestAnimationFrame(animateScroll);
+            } else {
                 isScrolling = false;
-            });
+            }
         }
+
+        requestAnimationFrame(animateScroll);
     }
 
-    // Функция применения прокрутки
-    function applyScroll(target, deltaX, deltaY) {
-        var maxScrollTop = target.scrollHeight - target.clientHeight;
-        var maxScrollLeft = target.scrollWidth - target.clientWidth;
-
-        var scrollTop = Math.max(0, Math.min(maxScrollTop, target.scrollTop + deltaY));
-        var scrollLeft = Math.max(0, Math.min(maxScrollLeft, target.scrollLeft + deltaX));
-
-        target.scrollTo({
-            top: scrollTop,
-            left: scrollLeft,
-            behavior: 'smooth'
-        });
-
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(function() {
-            scrollEvents = [];
-        }, settings.animationTime);
+    // Функция easing для плавного замедления (ease-out)
+    function easeOutQuad(t) {
+        return t * (2 - t);
     }
 
-    // Обработчик событий touchmove (тач-событий)
+    // Обработчик событий touchmove
     function onTouchMove(e) {
-        if (e.targetTouches.length > 1) return; // Игнорировать множественные касания
+        if (e.targetTouches.length > 1) return; // Игнорируем множественные касания
 
-        var touch = e.targetTouches[0];
-        var deltaX = -touch.clientX;
-        var deltaY = -touch.clientY;
+        const touch = e.targetTouches[0];
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
 
-        var target = getScrollableElement(e.target);
+        startX = touch.clientX;
+        startY = touch.clientY;
+
+        const target = getScrollableElement(e.target);
 
         if (target) {
-            handleScroll(target, deltaX, deltaY);
-            e.preventDefault();  // Предотвращение дефолтного поведения
+            smoothScroll(target, deltaX, deltaY);
+            e.preventDefault(); // Предотвращение дефолтного поведения
         }
     }
 
     // Поиск скроллируемого элемента
     function getScrollableElement(el) {
         while (el && el !== document.body) {
-            var style = getComputedStyle(el);
+            const style = getComputedStyle(el);
             if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
                 return el;
             }
@@ -72,13 +72,28 @@
         return document.scrollingElement || document.documentElement;
     }
 
-    // Привязка событий touchmove
-    window.addEventListener('touchmove', onTouchMove, { passive: false });
+    // Инициализация
+    function init() {
+        window.addEventListener('touchstart', (e) => {
+            if (e.targetTouches.length > 1) return; // Игнорируем множественные касания
+            const touch = e.targetTouches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            startTime = performance.now();
+        }, { passive: false });
 
-    // Определение методов для контроля над плагином
+        window.addEventListener('touchmove', onTouchMove, { passive: false });
+    }
+
+    // Запуск и уничтожение
     window.SmoothScrollMobile = {
+        init: init,
         destroy: function() {
             window.removeEventListener('touchmove', onTouchMove);
+            window.removeEventListener('touchstart', onTouchMove);
         }
     };
+
+    // Инициализация скрипта
+    init();
 })();
