@@ -1,7 +1,7 @@
 (function() {
     const settings = {
-        animationDuration: 400, // Продолжительность анимации в миллисекундах
-        stepSize: 100, // Размер шага прокрутки
+        animationDuration: 300, // Продолжительность анимации в миллисекундах
+        stepSize: 400, // Размер шага прокрутки
     };
 
     let isScrolling = false;
@@ -23,8 +23,8 @@
             const progress = Math.min(timeElapsed / duration, 1); // Нормализованный прогресс (от 0 до 1)
             const easing = easeOutQuad(progress);
 
-            target.scrollTop = startScrollTop + deltaY * easing;
-            target.scrollLeft = startScrollLeft + deltaX * easing;
+            target.scrollTop = startScrollTop - deltaY * easing; // Изменение знака для правильного направления
+            target.scrollLeft = startScrollLeft - deltaX * easing; // Изменение знака для правильного направления
 
             if (progress < 1) {
                 requestAnimationFrame(animateScroll);
