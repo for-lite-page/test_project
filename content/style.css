@@ -1,0 +1,203 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tektur", sans-serif;
+}
+body {
+    margin: 0; /* Убираем отступы по умолчанию */
+    background-color: #070707;
+    display: flex;
+    justify-content: center;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Помещаем звезды за все остальные элементы */
+    background-color: #0b0a0a; /* Цвет фона, черный для эффекта ночного неба */
+}
+
+.main{
+    padding: 5px 10px 80px 10px;
+}
+
+
+.main .list_project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.item{
+    border: 1px solid #8f89b9;
+    display: flex;
+    align-items: center;
+    height: 180px;
+    min-width: 140px;
+    background: linear-gradient(135deg, rgba(17, 19, 18, 0.692), rgba(0, 0, 0, 0.11));
+    backdrop-filter: blur(1px);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.item .block {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.item .logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+
+.logo img {
+    width: 130px;
+}
+
+.block .description {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    width: 140px;
+    height: 65px;
+}
+
+.block .description p{
+    color: #dddddd;
+    font-size: 8pt;
+    font-weight: 300;
+}
+
+.block .button {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(to left, #303161 0%, #37365e 50%, #303161 100%);
+
+}
+
+.button a {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.button button {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: 'Jura', sans-serif;
+    font-weight: 700;
+    font-size: 11pt;
+}
+
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0 0 0;
+}
+
+/* Стиль контейнера кнопок фильтра */
+.filter-btn {
+    background: linear-gradient(to left, #303161 0%, #37365e 50%, #303161 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11pt;
+    font-family: 'Jura', sans-serif;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.filter-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.1s ease;
+    z-index: 1;
+}
+
+.filter-btn:hover {
+    transform: scale(1.05);
+}
+
+.filter-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.filter-btn.active {
+    color: white;
+}
+
+.filter-btn.active::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+/*.main .list_project .item .block .button .space { звёзды на кнопках
+    width: 100%;
+    height: 100%;
+    gap: 3.6rem;
+    transition: 0.5s ease-in-out;
+    z-index: -1;
+    opacity: 1;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    border-radius: 10px;
+    background: linear-gradient(to left, #303161 0%, #37365e 50%, #303161 100%);
+}
+
+.main .list_project .item .block .button .star {
+    height: 1rem;
+    width: 0.2rem;
+    transition: 0.5s;
+    border-radius: 50px;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    position: relative;
+    background-color: white;
+    animation: space-animation calc(0.1s * var(--i)) linear infinite;
+}
+
+@keyframes space-animation {
+    0% {
+        transform: rotate(-30deg) translateY(calc(-52% * var(--i)));
+    }
+
+    100% {
+        transform: rotate(-30deg) translateY(calc(52% * var(--i)));
+    }
+}*/

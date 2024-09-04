@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="tabs.css">
+    <link rel="stylesheet" href="scrollbar.css">
+
+</head>
+<body>
+<div class="tabs">
+    <input id="home" type="radio" name="tabsMenu">
+    <input id="support" type="radio" name="tabsMenu">
+    <div class="buttons">
+        <label for="home" id="home_button"><i class="fa-solid fa-house"></i></label>
+        <label for="support" id="support_button" data-href="support.html"><i class="fa-sharp fa-solid fa-circle-info"></i></label>
+     </div>
+ </div>
+<div class="stars"></div>
+ <div class="container">
+     <div class="main">
+         <div class="separator">
+             <div class="filter-container">
+                 <button class="filter-btn active" onclick="showCategory('all')">Все</button>
+                 <button class="filter-btn" onclick="showCategory('tap')">Тапалки</button>
+                 <button class="filter-btn" onclick="showCategory('site')">Сайты</button>
+             </div>
+             <div class="list_project">
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- dogs -->
+                             <img src="logos/dogs.png" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Получаем аирдроп Dogs за возраст вашего телеграм аккаунта </p></div>
+                         <div class="button">
+                             <a href="pages_projects/dogs.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"><!-- 22. Cats -->
+                             <img src="logos/cats.png" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Получаем аирдроп Cats </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_cats.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 22. Ducks -->
+                             <img src="logos/ducs.png" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Получаем аирдроп DUCKS </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_ducks.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 22. Meta Racing -->
+                             <img src="https://pbs.twimg.com/media/GSgm2Q9WUAAQcWT?format=png&name=small" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Играем в гонки от Meta Racing </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_metaracing.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 22. Dejen Dog -->
+                             <img src="https://pbs.twimg.com/profile_banners/1628116157025640450/1720583017/600x200" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Собираем боксы от Hashkey </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_dejendog.html">
+                                 <button>перейти</button>
+                             </a>
+                             <div class="space">
+                                 <span style="--i: 31" class="star"></span>
+                                 <span style="--i: 70" class="star"></span>
+                                 <span style="--i: 57" class="star"></span>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 22. Tg stars -->
+                             <img src="logos/stars.png" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Собираем звёзды в телеграм </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_tgstars.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 22. Lumcity -->
+                             <img src="https://pbs.twimg.com/media/GSgezJ-WoAAy6Hy?format=png&name=small" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Развиваем город в Lumcity </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_lumcity.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 22. Tabi -->
+                             <img src="https://files.tabichain.com/voyage2/assets/images/header/logo.svg" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Фармим монеты от Tabi </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_tabi.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"><!-- 22. Tomarket -->
+                             <img src="https://pbs.twimg.com/media/GSRpc5NagAAn1FW?format=png&name=small" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Собираем томаты в тапалке </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_tomarket.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"><!-- 22. Flare -->
+                             <img src="https://pbs.twimg.com/media/GRkR02RXoAAd7tG?format=jpg&name=medium" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Фармим монеты от Flare </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_flare.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 22. Pixeltap -->
+                             <img src="logos/pixelab.png" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Фармим монеты от Pixeltap </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_Pixeltap.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 22. GEMZcoin -->
+                             <img src="logos/gemz.png" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Фармим монеты от GEMZcoin </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_GEMZcoin.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 22. Rollertap -->
+                             <img src="logos/rollertap.png" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Фармим монеты от Rollercoin </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_rollertap.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 21. Cryptorank -->
+                             <img src="https://cryptorank.io/static/logo.svg" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>⚡Фармим поинты от Cryptorank </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_cryptorank.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" ><!-- 20. TapSwap -->
+                             <img src="https://tapswap.ai/assets/logo-XL_wxRoR.svg" loading="lazy" alt="Example">
+                         </div>
+                         <div class="description"><p>💥Тапаем и получаем аирдроп от TapSwap </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_tapswap.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                <div class="item">
+                    <div class="block all site">
+                        <div class="logo" ><!-- 19. SoMon -->
+                            <img src="https://www.social.monster/assets/somon-dark.svg" loading="lazy" alt="Example">
+                        </div>
+                        <div class="description"><p>⚡Собираем поинты ждем токены 0w0 от SoMon </p></div>
+                        <div class="button">
+                            <a href="pages_projects/layout_somon.html">
+                                <button>перейти</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="block all site">
+                        <div class="logo"><!-- 18. Boomland -->
+                            <img src="https://airdrop.boomland.io/_next/static/media/boomland_airdrop.36cc6b01.png" loading="lazy" alt="Example">
+                        </div>
+                        <div class="description"><p>🔥Играем в бесплатную игру от Boomland и получаем аирдроп </p></div>
+                        <div class="button">
+                            <a href="pages_projects/layout_boomland.html">
+                                <button>перейти</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="block all site">
+                        <div class="logo" ><!-- 17. Super Champs -->
+                            <img src="https://app.superchamps.com/static/superchamps-logo-8816de26dfe7e0ab1be4a095cef5e144.png" loading="lazy" alt="Example">
+                        </div>
+                        <div class="description"><p>🔥Бесплатно собираем токены CHAMP от Super Champs </p></div>
+                        <div class="button">
+                            <a href="pages_projects/layout_superchamps.html">
+                                <button>перейти</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="block all site">
+                        <div class="logo"><!-- 16. Testnet Sonic -->
+                            <img src="https://odyssey.sonic.game/sonic.png" loading="lazy" alt="Example">
+                        </div>
+                        <div class="description"><p>⚡️Проходим тестнет от проекта Sonic и получаем токены </p></div>
+                        <div class="button">
+                            <a href="pages_projects/layout_sonic.html">
+                                <button>перейти</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"><!-- 22. Treasure Tapper -->
+                             <img src="https://news.gala.com/wp-content/uploads/2024/02/new-gala-1.png" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>⚡Собираем поинты от Gala </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_treasuretapper.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all site">
+                         <div class="logo"><!-- 14.Havens Compass -->
+                             <img src="https://www.havenscompass.com/images/HC_Long_Green.svg" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>⚡️Раздача от Havens Compass c пул наград 200 000$</p></div>
+                         <div class="button">
+                             <a href="pages_projects/HavensCompass.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"> <!-- 1. Catizen -->
+                             <img src="https://catizen.ai/static/images/logo.png" loading="lazy" alt=""> <!--Если по ссылке не кореектно отображается, то ширину делать 130рх-->
+                         </div>
+                         <div class="description"><p>⚡️Разводим котиков от Catizen и получаем криптовалюту wCATI </p></div> <!--описание не больше этого, иначе пойдёт под конопку-->
+                         <div class="button">
+                             <a href="pages_projects/layout_catizen.html"> <!--Ссылка на созданую штмл файл созданой ссылки. Штмл файлы тем ложить только в папку где лежит пример для тем-->
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all site">
+                         <div class="logo"> <!-- 2. Delabs -->
+                             <img src="logos/delabs.png" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>🍃Собираем листики, которые будут обмениваться на токены</p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_delabs.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all site">
+                         <div class="logo" style="padding-top: 5px; padding-bottom: 5px;"> <!-- 3. Grass -->
+                             <img src="https://app.getgrass.io/_next/image?url=%2Fimages%2Flogos%2Fgrass-logo-dark.png&w=1080&q=75" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>🌱Пассивно фармим поинты для airdrop от Grass </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_grass.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"> <!-- 4. Blum -->
+                             <img src="https://assets-global.website-files.com/65b6a1a4a0e2af577bccce96/65ba901600bd81cc8964b9ef_blum-logo.svg" style="padding-top: 5px; padding-bottom: 5px;" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>💎Собираем токены от мега перпективного проекта Blum</p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_blum.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all site">
+                         <div class="logo">
+                             <img src="logos/ogb.png" loading="lazy" alt=""> <!-- 6. OGCommunnity -->
+                         </div>
+                         <div class="description"><p>💥Фармим поинты на перспективу от проекта OGCommunnity  </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_ogcommunity.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo">
+                             <img src="https://cdn.memefi.club/landing/logo/MemefiLogoFull.webp" loading="lazy" alt=""> <!-- 7. MemeFi -->
+                         </div>
+                         <div class="description"><p>✨Убиваем боссов в кликере и получаем airdrop</p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_memefi.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"><!-- 8. Momo Ai -->
+                             <img src="logos/momoailogo.png" style="padding-top: 5px; padding-bottom: 5px;" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>⚡️Растим дерево и получаем airdrop </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_momoai.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item"> <!--новый блок-->
+                     <div class="block all tap">
+                         <div class="logo"><!-- 9. Hot Near -->
+                             <img src="https://hotdao.ai/logo.fe84b0e2.svg" style="padding-top: 5px; padding-right: 5px;" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>⚡️Получаем токены HOT от Near Wallet </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_hotnear.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"><!-- 10. Hamster Kombat -->
+                             <img src="https://pbs.twimg.com/profile_banners/1772330982382632960/1711452971/1500x500" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>⚡️Бреем хомяков и получаем airdrop от Hamster Kombat </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_hamster.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"><!-- 11. Empire's Battle -->
+                             <img src="https://empiresbattle.com/webp_x1/logo_x2.webp" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>⚡️Кликаем и прокачиваем героя в Empire's Battle </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_empiresb.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo" style="height: 60px;"><!-- 12. Pocket Rocket -->
+                             <img src="https://pbs.twimg.com/profile_images/1788496006696333312/T7cOJ0Jw_400x400.jpg" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>⚡️Добываем астероиды, улучшаем космический корабль и получаем airdrop </p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_pocketrocket.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="item">
+                     <div class="block all tap">
+                         <div class="logo"><!-- 13. Bobak -->
+                             <img src="https://bobak.meme/images/logo.svg" loading="lazy" alt="">
+                         </div>
+                         <div class="description"><p>⚡️Пробуем перекричать бобра и получаем airdrop от Bobak</p></div>
+                         <div class="button">
+                             <a href="pages_projects/layout_bobak.html">
+                                 <button>перейти</button>
+                             </a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </div>
+     </div>
+ </div>
+<script src="filter.js"></script>
+<script src="mainScript.js"></script>
+ </body>
+ </html>
