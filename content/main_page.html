@@ -10,16 +10,19 @@
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="tabs.css">
-    <link rel="stylesheet" href="scrollbar.css">
+    <script src="save_script.js"></script>
+    <script src="project_storage.js"></script>
 
 </head>
 <body>
 <div class="tabs">
     <input id="home" type="radio" name="tabsMenu">
     <input id="support" type="radio" name="tabsMenu">
-    <div class="buttons">
+    <input id="profile" type="radio" name="tabsMenu">
+    <div class="buttons_tabs">
         <label for="home" id="home_button"><i class="fa-solid fa-house"></i></label>
         <label for="support" id="support_button" data-href="support.html"><i class="fa-sharp fa-solid fa-circle-info"></i></label>
+        <label for="profile" id="profile_button" data-href="profile.html"><i class="fa-solid fa-user"></i></label>
      </div>
  </div>
 <div class="stars"></div>
@@ -32,102 +35,101 @@
                  <button class="filter-btn" onclick="showCategory('site')">Сайты</button>
              </div>
              <div class="list_project">
-                 <div class="item">
-                     <div class="block all tap">
-                         <div class="logo" ><!-- dogs -->
-                             <img src="logos/dogs.png" loading="lazy" alt="Example">
-                         </div>
-                         <div class="description"><p>⚡Получаем аирдроп Dogs за возраст вашего телеграм аккаунта </p></div>
-                         <div class="button">
-                             <a href="pages_projects/dogs.html">
-                                 <button>перейти</button>
-                             </a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <div class="block all tap">
-                         <div class="logo"><!-- 22. Cats -->
-                             <img src="logos/cats.png" loading="lazy" alt="Example">
-                         </div>
-                         <div class="description"><p>⚡Получаем аирдроп Cats </p></div>
-                         <div class="button">
-                             <a href="pages_projects/layout_cats.html">
-                                 <button>перейти</button>
-                             </a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <div class="block all tap">
-                         <div class="logo" ><!-- 22. Ducks -->
-                             <img src="logos/ducs.png" loading="lazy" alt="Example">
-                         </div>
-                         <div class="description"><p>⚡Получаем аирдроп DUCKS </p></div>
-                         <div class="button">
-                             <a href="pages_projects/layout_ducks.html">
-                                 <button>перейти</button>
-                             </a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <div class="block all tap">
-                         <div class="logo" ><!-- 22. Meta Racing -->
-                             <img src="https://pbs.twimg.com/media/GSgm2Q9WUAAQcWT?format=png&name=small" loading="lazy" alt="Example">
-                         </div>
-                         <div class="description"><p>⚡Играем в гонки от Meta Racing </p></div>
-                         <div class="button">
-                             <a href="pages_projects/layout_metaracing.html">
-                                 <button>перейти</button>
-                             </a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <div class="block all tap">
-                         <div class="logo" ><!-- 22. Dejen Dog -->
-                             <img src="https://pbs.twimg.com/profile_banners/1628116157025640450/1720583017/600x200" loading="lazy" alt="Example">
-                         </div>
-                         <div class="description"><p>⚡Собираем боксы от Hashkey </p></div>
-                         <div class="button">
-                             <a href="pages_projects/layout_dejendog.html">
-                                 <button>перейти</button>
-                             </a>
-                             <div class="space">
-                                 <span style="--i: 31" class="star"></span>
-                                 <span style="--i: 70" class="star"></span>
-                                 <span style="--i: 57" class="star"></span>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <div class="block all tap">
-                         <div class="logo" ><!-- 22. Tg stars -->
-                             <img src="logos/stars.png" loading="lazy" alt="Example">
-                         </div>
-                         <div class="description"><p>⚡Собираем звёзды в телеграм </p></div>
-                         <div class="button">
-                             <a href="pages_projects/layout_tgstars.html">
-                                 <button>перейти</button>
-                             </a>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="item">
-                     <div class="block all tap">
-                         <div class="logo" ><!-- 22. Lumcity -->
-                             <img src="https://pbs.twimg.com/media/GSgezJ-WoAAy6Hy?format=png&name=small" loading="lazy" alt="Example">
-                         </div>
-                         <div class="description"><p>⚡Развиваем город в Lumcity </p></div>
-                         <div class="button">
-                             <a href="pages_projects/layout_lumcity.html">
-                                 <button>перейти</button>
-                             </a>
-                         </div>
-                     </div>
-                 </div>
+<!--                 <div class="item">-->
+<!--                     <div class="block all tap">-->
+<!--                         <div class="logo" >&lt;!&ndash; dogs &ndash;&gt;-->
+<!--                             <img src="logos/dogs.png" loading="lazy" alt="">-->
+<!--                         </div>-->
+<!--                         <div class="description"><p>⚡Получаем аирдроп Dogs за возраст вашего телеграм аккаунта </p></div>-->
+<!--                         <div class="button">-->
+<!--                             <a href="pages_projects/dogs.html"><button>перейти</button></a>-->
+<!--                             <label data-id="0" data-name="dogs"><i class="fa-solid fa-bookmark"></i></label>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--                 </div>-->
+<!--                 <div class="item">-->
+<!--                     <div class="block all tap">-->
+<!--                         <div class="logo">&lt;!&ndash; 22. Cats &ndash;&gt;-->
+<!--                             <img src="logos/cats.png" loading="lazy" alt="">-->
+<!--                         </div>-->
+<!--                         <div class="description"><p>⚡Получаем аирдроп Cats </p></div>-->
+<!--                         <div class="button">-->
+<!--                             <a href="pages_projects/layout_cats.html">-->
+<!--                                 <button>перейти</button>-->
+<!--                             </a>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--                 </div>-->
+<!--                 <div class="item">-->
+<!--                     <div class="block all tap">-->
+<!--                         <div class="logo" >&lt;!&ndash; 22. Ducks &ndash;&gt;-->
+<!--                             <img src="logos/ducs.png" loading="lazy" alt="Example">-->
+<!--                         </div>-->
+<!--                         <div class="description"><p>⚡Получаем аирдроп DUCKS </p></div>-->
+<!--                         <div class="button">-->
+<!--                             <a href="pages_projects/layout_ducks.html">-->
+<!--                                 <button>перейти</button>-->
+<!--                             </a>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--                 </div>-->
+<!--                 <div class="item">-->
+<!--                     <div class="block all tap">-->
+<!--                         <div class="logo" >&lt;!&ndash; 22. Meta Racing &ndash;&gt;-->
+<!--                             <img src="https://pbs.twimg.com/media/GSgm2Q9WUAAQcWT?format=png&name=small" loading="lazy" alt="Example">-->
+<!--                         </div>-->
+<!--                         <div class="description"><p>⚡Играем в гонки от Meta Racing </p></div>-->
+<!--                         <div class="button">-->
+<!--                             <a href="pages_projects/layout_metaracing.html">-->
+<!--                                 <button>перейти</button>-->
+<!--                             </a>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--                 </div>-->
+<!--                 <div class="item">-->
+<!--                     <div class="block all tap">-->
+<!--                         <div class="logo" >&lt;!&ndash; 22. Dejen Dog &ndash;&gt;-->
+<!--                             <img src="https://pbs.twimg.com/profile_banners/1628116157025640450/1720583017/600x200" loading="lazy" alt="Example">-->
+<!--                         </div>-->
+<!--                         <div class="description"><p>⚡Собираем боксы от Hashkey </p></div>-->
+<!--                         <div class="button">-->
+<!--                             <a href="pages_projects/layout_dejendog.html">-->
+<!--                                 <button>перейти</button>-->
+<!--                             </a>-->
+<!--                             <div class="space">-->
+<!--                                 <span style="&#45;&#45;i: 31" class="star"></span>-->
+<!--                                 <span style="&#45;&#45;i: 70" class="star"></span>-->
+<!--                                 <span style="&#45;&#45;i: 57" class="star"></span>-->
+<!--                             </div>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--                 </div>-->
+<!--                 <div class="item">-->
+<!--                     <div class="block all tap">-->
+<!--                         <div class="logo" >&lt;!&ndash; 22. Tg stars &ndash;&gt;-->
+<!--                             <img src="logos/stars.png" loading="lazy" alt="Example">-->
+<!--                         </div>-->
+<!--                         <div class="description"><p>⚡Собираем звёзды в телеграм </p></div>-->
+<!--                         <div class="button">-->
+<!--                             <a href="pages_projects/layout_tgstars.html">-->
+<!--                                 <button>перейти</button>-->
+<!--                             </a>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--                 </div>-->
+<!--                 <div class="item">-->
+<!--                     <div class="block all tap">-->
+<!--                         <div class="logo" >&lt;!&ndash; 22. Lumcity &ndash;&gt;-->
+<!--                             <img src="https://pbs.twimg.com/media/GSgezJ-WoAAy6Hy?format=png&name=small" loading="lazy" alt="Example">-->
+<!--                         </div>-->
+<!--                         <div class="description"><p>⚡Развиваем город в Lumcity </p></div>-->
+<!--                         <div class="button">-->
+<!--                             <a href="pages_projects/layout_lumcity.html">-->
+<!--                                 <button>перейти</button>-->
+<!--                             </a>-->
+<!--                         </div>-->
+<!--                     </div>-->
+<!--                 </div>-->
                  <div class="item">
                      <div class="block all tap">
                          <div class="logo" ><!-- 22. Tabi -->
@@ -473,6 +475,7 @@
 <script src="filter.js"></script>
 <script src="mainScript.js"></script>
 <script src="SmothScroll.js"></script>
+
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>-->
 <!--<script>-->
 <!--    SmoothScroll({-->

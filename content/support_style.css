@@ -170,5 +170,5 @@ p {
 
 #inst {
     border: 1px solid #fd90ba;
-         filter: drop-shadow(0 0 4px #78143a) drop-shadow(0 0 4px #78143a);
+    filter: drop-shadow(0 0 4px #78143a) drop-shadow(0 0 4px #78143a);
 }
