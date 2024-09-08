@@ -36,7 +36,7 @@ function create_page(){
                 <div class="description"><p>${allProject[i].description}</p></div>
                 <div class="button">
                     <a href="${allProject[i].hrefPage}"><button>перейти</button></a>
-                    <label id="${allProject[i].id}" data-id="${allProject[i].id}" data-name="${allProject[i].name}"><i class="fa-solid fa-play"></i></label>
+                    <label id="${allProject[i].id}" data-id="${allProject[i].id}" data-name="${allProject[i].name}" data-href="${allProject[i].quick_start}"><i class="fa-solid fa-play"></i></label>
                 </div>
             </div>
         </div>`
@@ -52,7 +52,6 @@ function create_page(){
             } else {
                 console.log(isSave)
             }
-
         }
     }
 }
@@ -67,6 +66,10 @@ function addProjectInDataBase(){
 
             let currentProject = { id: idProject, name: nameProject };
 
+            let status_operation = "none"
+
+            let href = this.getAttribute('data-href')
+
             // Проверяем, есть ли обьект в базе данных
             let exists = dataBase.some(item => item.id === currentProject.id);
             console.log('Before:', dataBase);
@@ -74,8 +77,15 @@ function addProjectInDataBase(){
             // Если проект не существует, добавляем его в массив
             if (!exists) {
                 dataBase.push(currentProject);
-            } else {
-                console.log("обьект уже сохранён")
+                status_operation = "add"
+                console.log("element well be add in database")
+            } else if (!href){
+                dataBase.splice(idProject, 1);
+                status_operation = "delete"
+                console.log("element well be delete from database")
+            } else if(href){
+                // window.location.href = href;
+                console.log("project has been started")
             }
 
             // Функция для сохранения данных в IndexedDB
@@ -88,14 +98,13 @@ function addProjectInDataBase(){
                 let transaction = db.transaction('users', 'readwrite');
                 let store = transaction.objectStore('users');
 
-                // Сохраняем каждый проект по отдельности
                 let request = store.put(user);
 
                 request.onsuccess = function() {
                     console.log('User data saved successfully');
                     let isSave = document.getElementById(`${idProject}`)
                     isSave.style.color = "#fff"
-                    isSave.style.opacity =" 1"
+                    isSave.style.opacity = "1"
                 };
 
                 request.onerror = function() {
@@ -103,11 +112,37 @@ function addProjectInDataBase(){
                 };
             }
 
-            // Сохраняем каждый новый проект в IndexedDB
-            dataBase.forEach(project => {
-                saveUserData(project);
-            });
+            function deleteUserData(user) {
+                if (!db) {
+                    console.error('Database not opened');
+                    return;
+                }
 
+                let transaction = db.transaction('users', 'readwrite');
+                let store = transaction.objectStore('users');
+
+                let request = store.delete(user);
+
+                request.onsuccess = function() {
+                    console.log(`User with ID ${user} deleted successfully`);
+                    let isSave = document.getElementById(`${idProject}`)
+                    isSave.style.color = "transparent"
+                    isSave.style.opacity = "0.3"
+                };
+
+                request.onerror = function() {
+                    console.error(`Failed to delete user with ID ${user}`);
+                };
+            }
+
+            // Сохраняем каждый новый проект в IndexedDB
+            if (status_operation === "add") {
+                dataBase.forEach(project => {
+                    saveUserData(project);
+                });
+            } else if (status_operation === "delete") {
+                deleteUserData(idProject)
+            }
             console.log('After:', dataBase);
         });
     });

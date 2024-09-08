@@ -9,11 +9,11 @@ const wrapper = document.querySelector(".container"),
     target = document.getElementsByTagName("body")[0];
 
 let easing = "cubic-bezier(0.25, 0.46, 0.45, 0.94)", // Более отзывчивая функция
-    duration = "0.1s", // Уменьшенная длительность
+    duration = "0.2s", // Уменьшенная длительность
     lastScrollY = window.scrollY,
     pos = 0;
 
-const init = () => {
+const smooth = () => {
     target.style.height = wrapper.offsetHeight + "px";
     target.style.overflow = "auto";
 
@@ -47,4 +47,4 @@ const loop = () => {
     requestAnimationFrame(loop);
 };
 
-init();
+smooth();
