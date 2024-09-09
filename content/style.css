@@ -182,7 +182,11 @@ body {
 }
 
 
-
+#user_name{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
 
 /*.main .list_project .item .block .button .space { звёзды на кнопках
     width: 100%;
