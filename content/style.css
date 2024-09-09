@@ -10,6 +10,7 @@
     box-sizing: border-box;
     font-family: "Tektur", sans-serif;
 }
+
 body {
     margin: 0; /* Убираем отступы по умолчанию */
     background-color: #070707;
@@ -181,14 +182,69 @@ body {
     transform: translate(-50%, -50%) scale(1);
 }
 
-
-#user_name{
+.luminescent{
     display: flex;
-    justify-content: center;
-    color: white;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
 }
 
-/*.main .list_project .item .block .button .space { звёзды на кнопках
+.user_profile {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border-radius: 15px;
+    height: auto;
+    width: 100%;
+    background-color: rgba(46, 58, 90, 0.2);
+    backdrop-filter: blur(3px);
+}
+
+.user_photo {
+    display: flex;
+    justify-content: center;
+}
+.user_photo label {
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    font-size: 5rem ;
+    filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px white);
+}
+
+.user_name p{
+    color: white;
+    height: 30px;
+    font-size: 12pt;
+    font-family: 'Jura', sans-serif !important;;
+}
+
+.luminescent1{
+    font-size: 0.5rem;
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    top: 89%;
+    left: 3%;
+    color: rgb(199, 253, 255);
+    -webkit-text-stroke: 2px #b6fdff;
+    filter: drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3);
+}
+
+.luminescent2{
+    font-size: 0.5rem;
+    position: absolute;
+    z-index: -1;
+    bottom: 89%;
+    left: 95%;
+    color: rgb(199, 253, 255);
+    -webkit-text-stroke: 2px #b6fdff;
+    filter: drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3);
+}
+
+
+/*.main .list_project .item .block .button .space{ звёзды на кнопках
     width: 100%;
     height: 100%;
     gap: 3.6rem;
