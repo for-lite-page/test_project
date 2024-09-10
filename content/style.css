@@ -126,7 +126,6 @@ body {
 
 }
 
-
 .filter-container {
     display: flex;
     justify-content: center;
@@ -186,8 +185,18 @@ body {
     display: flex;
     height: 100%;
     width: 100%;
+    min-width: 300px;
     position: relative;
+}
 
+.not_save {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 15pt;
 }
 
 .user_profile {
@@ -244,37 +253,3 @@ body {
 }
 
 
-/*.main .list_project .item .block .button .space{ звёзды на кнопках
-    width: 100%;
-    height: 100%;
-    gap: 3.6rem;
-    transition: 0.5s ease-in-out;
-    z-index: -1;
-    opacity: 1;
-    overflow: hidden;
-    position: absolute;
-    display: flex;
-    border-radius: 10px;
-    background: linear-gradient(to left, #303161 0%, #37365e 50%, #303161 100%);
-}
-
-.main .list_project .item .block .button .star {
-    height: 1rem;
-    width: 0.2rem;
-    transition: 0.5s;
-    border-radius: 50px;
-    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-    position: relative;
-    background-color: white;
-    animation: space-animation calc(0.1s * var(--i)) linear infinite;
-}
-
-@keyframes space-animation {
-    0% {
-        transform: rotate(-30deg) translateY(calc(-52% * var(--i)));
-    }
-
-    100% {
-        transform: rotate(-30deg) translateY(calc(52% * var(--i)));
-    }
-}*/

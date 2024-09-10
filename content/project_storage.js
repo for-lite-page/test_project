@@ -17,7 +17,7 @@ let allProject = [
         filterClass: "all tap",
         logo: "logos/dogs.png",
         description: "⚡Получаем аирдроп Dogs за возраст вашего телеграм аккаунта",
-        hrefPage: "pages_projects/dogs.html",
+        hrefPage: "none",
         quick_start: "https://t.me/dogshouse_bot/join?startapp=PmMnPaETT2W6A1G8xMIBuw"
     },
     {

@@ -1,13 +1,11 @@
 
 //--------------------ДИНАМИЧЕСКАЯ СБОРКА СТРАНИЦЫ---------------------------------
 //фнкиции create_page and addProjectInDataBase вызываються после выгрузки даных из локальной базы данных в файде save_script
-
 function create_page(){
 
     const listElement = document.querySelector('.list_project');
 
     for (let i = 0; i < allProject.length; i++) {
-
         if(document.title === "home"){
             listElement.insertAdjacentHTML(
                 'beforeend',
@@ -18,29 +16,33 @@ function create_page(){
                 </div>
                 <div class="description"><p>${allProject[i].description}</p></div>
                 <div class="button">
-                    <a href="${allProject[i].hrefPage}"><button>перейти</button></a>
+                    <a href="pages_projects/item_page.html?name=${allProject[i].name}"><button>перейти</button></a>
                     <label id="${allProject[i].id}" data-id="${allProject[i].id}" data-name="${allProject[i].name}"><i class="fa-solid fa-bookmark"></i></label>
                 </div>
             </div>
         </div>`
-            );
+            ); console.log("item ", i)
         } else if (document.title === "profile"){
-            if (dataBase.some(item => item.name === allProject[i].name)){
-                listElement.insertAdjacentHTML(
-                    'beforeend',
-                    `<div class="item">
+            if (saveStatus) {
+                if (dataBase.some(item => item.name === allProject[i].name)){
+                    listElement.insertAdjacentHTML(
+                        'beforeend',
+                        `<div class="item">
             <div class="block ${allProject[i].filterClass}">
                 <div class="logo">
                     <img src="${allProject[i].logo}" loading="lazy" alt="">
                 </div>
                 <div class="description"><p>${allProject[i].description}</p></div>
                 <div class="button">
-                    <a href="${allProject[i].hrefPage}"><button>перейти</button></a>
+                    <a href="pages_projects/item_page.html?name=${allProject[i].name}"><button>перейти</button></a>
                     <label id="${allProject[i].id}" data-id="${allProject[i].id}" data-name="${allProject[i].name}" data-href="${allProject[i].quick_start}"><i class="fa-solid fa-play"></i></label>
                 </div>
             </div>
-        </div>`
-                );
+        </div>`);
+                }
+            } else if (!saveStatus) {
+                let none = document.querySelector('.not_save')
+                none.style.display = "flex"
             }
         }
 
@@ -56,98 +58,116 @@ function create_page(){
     }
 }
 
-function addProjectInDataBase(){
-    // сохранение тем в избранное
+
+function createItemPage(){
+    const bodyPage = document.querySelector('.page')
+    let params = new URLSearchParams(window.location.search);
+    let nameProject = params.get('name')
+    let foundItem = itemPageDataBase.find(item => item.name === nameProject);
+    let dopInf = allProject.find(item => item.name === nameProject)
+    let href = ""
+
+    if (!dopInf.logo.includes('http')) {
+        href = "../"
+    }
+
+    bodyPage.insertAdjacentHTML('beforeend',
+        `<div class="logo" style="${foundItem.styleForlogo}"><img src="${href}${dopInf.logo}" alt=" "></div>
+        <div class="loading_time"><p>дата добавления ${foundItem.time}</p></div>
+        <div class="info">
+            <div class="switch_content">
+                <div class="switch">
+                    <div id="left" class="label" onclick="showContent('instruction')">Инструкция</div>
+                    <div id="right" class="label" onclick="showContent('description')">Описание</div>
+                </div>
+                <div class="indicator">
+                    <div class="slider"></div>
+                </div>
+            </div>
+            <div class="content_page">
+                <div id="instruction" class="content active">
+                    <p>${foundItem.shortDescription}</p>
+                    <p>${foundItem.instruction}</p>
+                    <a href="${dopInf.quick_start}" class="button"><button class="link">Перейти</button></a> <!--ССЫЛКУ СЮДА-->
+                </div>
+                <div id="description" class="content">${foundItem.description}</div>
+            </div>
+
+        </div>`)
+}
+
+function addProjectInDataBase() {
+    // Сохранение проектов в избранное
     document.querySelectorAll('.button label').forEach(label => {
         label.addEventListener('click', function () {
-
             const idProject = parseInt(this.getAttribute('data-id'), 10); // Преобразуем в число
             const nameProject = this.getAttribute('data-name');
-
+            const href = this.getAttribute('data-href');
             let currentProject = { id: idProject, name: nameProject };
 
-            let status_operation = "none"
+            // Проверяем, есть ли проект в базе данных
+            const projectExists = dataBase.some(item => item.id === currentProject.id);
+            let statusOperation = "none";
 
-            let href = this.getAttribute('data-href')
-
-            // Проверяем, есть ли обьект в базе данных
-            let exists = dataBase.some(item => item.id === currentProject.id);
             console.log('Before:', dataBase);
 
-            // Если проект не существует, добавляем его в массив
-            if (!exists) {
+            if (!projectExists) {
                 dataBase.push(currentProject);
-                status_operation = "add"
-                console.log("element well be add in database")
-            } else if (!href){
-                dataBase.splice(idProject, 1);
-                status_operation = "delete"
-                console.log("element well be delete from database")
-            } else if(href){
-                // window.location.href = href;
-                console.log("project has been started")
+                statusOperation = "add";
+                console.log(statusOperation);
+            } else if (!href) {
+                dataBase = dataBase.filter(item => item.id !== idProject);
+                statusOperation = "delete";
+                console.log(statusOperation);
+            } else if (href) {
+                window.location.href = href;
+                console.log(statusOperation);
+                return;
             }
 
-            // Функция для сохранения данных в IndexedDB
-            function saveUserData(user) {
+            function saveOrDeleteUserData(user) {
                 if (!db) {
                     console.error('Database not opened');
                     return;
                 }
-
                 let transaction = db.transaction('users', 'readwrite');
                 let store = transaction.objectStore('users');
+                let request
 
-                let request = store.put(user);
-
-                request.onsuccess = function() {
-                    console.log('User data saved successfully');
-                    let isSave = document.getElementById(`${idProject}`)
-                    isSave.style.color = "#fff"
-                    isSave.style.opacity = "1"
-                };
-
-                request.onerror = function() {
-                    console.error('Failed to save user data');
-                };
-            }
-
-            function deleteUserData(user) {
-                if (!db) {
-                    console.error('Database not opened');
-                    return;
+                if(statusOperation === "add"){
+                    request = store.put(user); // Сохранение данных
+                } else if(statusOperation === "delete"){
+                    request = store.delete(user); // Удаление данных
                 }
 
-                let transaction = db.transaction('users', 'readwrite');
-                let store = transaction.objectStore('users');
-
-                let request = store.delete(user);
-
                 request.onsuccess = function() {
-                    console.log(`User with ID ${user} deleted successfully`);
-                    let isSave = document.getElementById(`${idProject}`)
-                    isSave.style.color = "transparent"
-                    isSave.style.opacity = "0.3"
+                    updateProjectUI(idProject, statusOperation);
                 };
 
                 request.onerror = function() {
-                    console.error(`Failed to delete user with ID ${user}`);
+                    console.error('Failed to save or delete user data');
                 };
             }
-
-            // Сохраняем каждый новый проект в IndexedDB
-            if (status_operation === "add") {
-                dataBase.forEach(project => {
-                    saveUserData(project);
-                });
-            } else if (status_operation === "delete") {
-                deleteUserData(idProject)
+            // Функция обновления UI (изменение стилей проекта)
+            function updateProjectUI(projectId, statusOperation) {
+                let projectLabel = document.getElementById(`${projectId}`);
+                if (statusOperation === "add") {
+                    projectLabel.style.color = "#fff";
+                    projectLabel.style.opacity = "1";
+                } else {
+                    projectLabel.style.color = "transparent";
+                    projectLabel.style.opacity = "0.3";
+                }
+            }
+            if(statusOperation === "add"){
+                saveOrDeleteUserData(currentProject);
+            } else if(statusOperation === "delete"){
+                saveOrDeleteUserData(idProject);
             }
             console.log('After:', dataBase);
         });
     });
 }
-
 
 
 // переход между вкладками табса
@@ -159,7 +179,6 @@ document.querySelectorAll('.buttons_tabs label').forEach(label => {
         }
     });
 });
-
 
 
 // ------------------ТАБС ПАНЕЛЬ--------------------------
@@ -177,6 +196,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }, 80);
 
+    if(document.title === "item page"){
+        createItemPage()
+    }
 });
 
 
@@ -199,7 +221,6 @@ for (let i = 0; i < 100; i++) {
     star.style.animation = `twinkling ${Math.random() * 3 + 1}s infinite`;
 
     if (document.title === "home") {
-        console.log("is home page")
     } else {
         // Добавляем анимацию планового передвижения
         const moveX = Math.random() < 0.5 ? -1 : 1;
