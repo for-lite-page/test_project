@@ -9,7 +9,7 @@
     <meta property="og:image" content="prew.png">
     <title>void loading</title>
     <link rel="stylesheet" href="style.css">
-
+    <script src="content/save_script.js"></script>
 </head>
 
 <body>
@@ -20,9 +20,14 @@
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-       setTimeout(function() {
-            window.location.href = 'content/main_page.html';
-        }, 5000);
+        setTimeout(function() {
+            if(!saveStatus){
+                window.location.href = 'content/main_page.html';
+            } else {
+                window.location.href = 'content/profile.html';
+            }
+        }, 2000);
+
     </script>
 </body>
 
