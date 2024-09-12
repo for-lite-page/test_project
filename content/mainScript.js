@@ -1,4 +1,5 @@
-
+let host = window.location.hostname;
+console.log(host);
 //--------------------ДИНАМИЧЕСКАЯ СБОРКА СТРАНИЦЫ---------------------------------
 //фнкиции create_page and addProjectInDataBase вызываються после выгрузки даных из локальной базы данных в файде save_script
 function create_page(){
