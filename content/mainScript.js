@@ -3,6 +3,8 @@
 //фнкиции create_page and addProjectInDataBase вызываються после выгрузки даных из локальной базы данных в файде save_script
 function create_page(){
 
+    console.log("main start create page")
+
     const listElement = document.querySelector('.list_project');
 
     for (let i = 0; i < allProject.length; i++) {
@@ -12,7 +14,7 @@ function create_page(){
                 `<div class="item">
             <div class="block ${allProject[i].filterClass}">
                 <div class="logo">
-                    <img src="${allProject[i].logo}" loading="lazy" alt="">
+                    <img src="${allProject[i].logo}" loading="lazy" alt="" >
                 </div>
                 <div class="description"><p>${allProject[i].description}</p></div>
                 <div class="button">
@@ -21,7 +23,7 @@ function create_page(){
                 </div>
             </div>
         </div>`
-            ); console.log("item ", i)
+            );
         } else if (document.title === "profile"){
             if (saveStatus) {
                 if (dataBase.some(item => item.name === allProject[i].name)){
@@ -198,6 +200,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if(document.title === "item page"){
         createItemPage()
+    }
+
+    if (document.title === "home") {
+        let div = document.querySelectorAll('.list_project');
+        if (!div.hasChildNodes()) {
+            console.log("page wasn't created")
+        }
     }
 });
 
