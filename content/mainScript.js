@@ -1,7 +1,82 @@
-let host = window.location.hostname;
-console.log(host);
-//--------------------ДИНАМИЧЕСКАЯ СБОРКА СТРАНИЦЫ---------------------------------
-//фнкиции create_page and addProjectInDataBase вызываються после выгрузки даных из локальной базы данных в файде save_script
+// let host = window.location.hostname;
+// console.log(host);
+// if (host !== "for-lite-page.github.io") {
+//     location.href = "https://t.me/VoidProjectBot/app"
+// }
+
+
+
+let dataBase = [
+    {
+        id: 0,
+        name: "none"
+    }
+]
+
+
+let saveStatus = false
+
+let db;
+
+function openDatabase() {
+    return new Promise((resolve, reject) => {
+        let request = indexedDB.open('myDatabase', 1);
+
+        request.onupgradeneeded = function(event) {
+            let db = event.target.result;
+            db.createObjectStore('users', { keyPath: 'id' }); // Создание хранилища
+        };
+
+        request.onsuccess = function(event) {
+            db = event.target.result; // Открытие успешное, база доступна
+            console.log('Database opened successfully');
+            resolve();
+        };
+
+        request.onerror = function(event) {
+            console.error('Database failed to open');
+            reject('Database failed to open');
+        };
+    });
+}
+
+async function getAllUsers() {
+    if (!db) {
+        console.error('Database not opened');
+        return;
+    }
+
+    let transaction = db.transaction('users', 'readonly');
+    let store = transaction.objectStore('users');
+
+    let request = store.getAll(); // Получаем все данные
+
+    return new Promise((resolve, reject) => {
+        request.onsuccess = function() {
+            console.log('All users:', request.result); // Выводим данные в консоль
+            resolve(request.result);
+        };
+
+        request.onerror = function() {
+            console.error('Failed to fetch user data');
+            reject('Failed to fetch user data');
+        };
+    });
+}
+
+async function init() {
+    await openDatabase(); // Ждем, пока база откроется
+    let users = await getAllUsers(); // Ждем получения всех пользователей
+    dataBase = users; // Обновляем базу данных
+    // Проверка на наличие более одного элемента
+    saveStatus = dataBase.length >= 1;
+    console.log('Save status:', saveStatus); // Логируем статус
+    create_page()
+    addProjectInDataBase()//запускаем возможность сохранять в избранное
+}
+init();
+
+
 function create_page(){
 
     console.log("main start create page")
@@ -172,7 +247,6 @@ function addProjectInDataBase() {
     });
 }
 
-
 // переход между вкладками табса
 document.querySelectorAll('.buttons_tabs label').forEach(label => {
     label.addEventListener('click', function() {
@@ -184,7 +258,6 @@ document.querySelectorAll('.buttons_tabs label').forEach(label => {
 });
 
 
-// ------------------ТАБС ПАНЕЛЬ--------------------------
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         if (document.title === "home") {
@@ -201,13 +274,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if(document.title === "item page"){
         createItemPage()
-    }
-
-    if (document.title === "home") {
-        let div = document.querySelectorAll('.list_project');
-        if (!div.hasChildNodes()) {
-            console.log("page wasn't created")
-        }
     }
 });
 
