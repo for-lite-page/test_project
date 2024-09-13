@@ -1,7 +1,4 @@
-let dataBase = [
-    {id: 0,
-    name: "none"}
-]
+
 
 
 let saveStatus = false
@@ -60,12 +57,8 @@ async function getAllUsers() {
 async function init() {
     await openDatabase(); // Ждем, пока база откроется
     let users = await getAllUsers(); // Ждем получения всех пользователей
-    dataBase = users; // Обновляем базу данных
-
     // Проверка на наличие более одного элемента
     saveStatus = dataBase.length >= 1;
-
     console.log('Save status:', saveStatus); // Логируем статус
-    addProjectInDataBase()//запускаем возможность сохранять в избранное
 }
 init();
