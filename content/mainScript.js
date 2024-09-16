@@ -5,7 +5,6 @@
 // }
 
 
-
 let dataBase = [
     {
         id: 0,
@@ -78,8 +77,6 @@ init();
 
 
 function create_page(){
-
-    console.log("main start create page")
 
     const listElement = document.querySelector('.list_project');
 
