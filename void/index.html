@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <meta property="og:image" content="prew.png">
+    <title>void loading</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="content/Talisker.js"></script>
+</head>
+
+<body>
+    <div class="video-container" >
+        <video autoplay muted loop id="background-video" class="rotating-video" preload="auto">
+            <source src="black_hole.mp4" type="video/mp4">
+        </video>
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let dataBase = [
+            {id: 0,
+                name: "none"}
+        ]
+
+        let saveStatus = false
+
+        let db;
+
+        function openDatabase() {
+            return new Promise((resolve, reject) => {
+                let request = indexedDB.open('myDatabase', 1);
+
+                request.onupgradeneeded = function(event) {
+                    let db = event.target.result;
+                    db.createObjectStore('users', { keyPath: 'id' }); // Создание хранилища
+                };
+
+                request.onsuccess = function(event) {
+                    db = event.target.result; // Открытие успешное, база доступна
+                    console.log('Database opened successfully');
+                    resolve();
+                };
+                request.onerror = function(event) {
+                    console.error('Database failed to open');
+                    reject('Database failed to open');
+                };
+            });
+        }
+
+        async function getAllUsers() {
+            if (!db) {
+                console.error('Database not opened');
+                return;
+            }
+
+            let transaction = db.transaction('users', 'readonly');
+            let store = transaction.objectStore('users');
+
+            let request = store.getAll(); // Получаем все данные
+
+            return new Promise((resolve, reject) => {
+                request.onsuccess = function() {
+                    console.log('All users:', request.result); // Выводим данные в консоль
+                    resolve(request.result);
+                };
+
+                request.onerror = function() {
+                    console.error('Failed to fetch user data');
+                    reject('Failed to fetch user data');
+                };
+            });
+        }
+
+        async function init() {
+            await openDatabase();
+            let users = await getAllUsers();
+            dataBase = users;
+            saveStatus = dataBase.length >= 1;
+        }
+        init();
+
+
+        setTimeout(function() {
+            if(!saveStatus){
+                window.location.href = 'content/main_page.html';
+            } else {
+                window.location.href = 'content/profile.html';
+            }
+        }, 2000);
+
+    </script>
+</body>
+
+</html>
