@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tektur", sans-serif;
+}
+
+body {
+    margin: 0; /* Убираем отступы по умолчанию */
+    background-color: #070707;
+    display: flex;
+    justify-content: center;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Помещаем звезды за все остальные элементы */
+    background-color: #0b0a0a; /* Цвет фона, черный для эффекта ночного неба */
+}
+
+.main{
+    padding: 5px 10px 80px 10px;
+}
+
+
+.main .list_project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.item{
+    border: 1px solid #8f89b9;
+    display: flex;
+    align-items: center;
+    height: 180px;
+    min-width: 140px;
+    background: linear-gradient(135deg, rgba(17, 19, 18, 0.692), rgba(0, 0, 0, 0.11));
+    backdrop-filter: blur(1px);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.item .block {
+    display: grid;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.item .logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+}
+
+.logo img {
+    width: 130px;
+}
+
+.block .description {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    width: 140px;
+    height: 65px;
+}
+
+.block .description p{
+    color: #dddddd;
+    font-size: 8pt;
+    font-weight: 300;
+}
+
+.block .button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 28px;
+}
+
+.button label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 35px;
+    -webkit-text-stroke: 1px white;
+    font-size: 1.4em;
+    color: transparent;
+    opacity: 0.3;
+    transition: 0.5s;
+}
+
+
+.button a {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left, #303161 0%, #37365e 50%, #303161 100%);
+    border-radius: 10px;
+    }
+
+.button button {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: 'Jura', sans-serif;
+    font-weight: 700;
+    font-size: 11pt;
+
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0 0 0;
+}
+
+/* Стиль контейнера кнопок фильтра */
+.filter-btn {
+    background: linear-gradient(to left, #303161 0%, #37365e 50%, #303161 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11pt;
+    font-family: 'Jura', sans-serif;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.filter-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.1s ease;
+    z-index: 1;
+}
+
+.filter-btn:hover {
+    transform: scale(1.05);
+}
+
+.filter-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.filter-btn.active {
+    color: white;
+}
+
+.filter-btn.active::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.luminescent{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    min-width: 330px;
+    position: relative;
+}
+
+.not_save {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 15pt;
+}
+
+.user_profile {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border-radius: 15px;
+    height: auto;
+    width: 100%;
+    background-color: rgba(46, 58, 90, 0.2);
+    backdrop-filter: blur(3px);
+}
+
+.user_photo {
+    display: flex;
+    justify-content: center;
+}
+.user_photo label {
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    font-size: 5rem ;
+    filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px white);
+}
+
+.user_name p{
+    color: white;
+    height: 30px;
+    font-size: 12pt;
+    font-family: 'Jura', sans-serif !important;;
+}
+
+.luminescent1{
+    font-size: 0.5rem;
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    top: 89%;
+    left: 3%;
+    color: rgb(199, 253, 255);
+    -webkit-text-stroke: 2px #b6fdff;
+    filter: drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3);
+}
+
+.luminescent2{
+    font-size: 0.5rem;
+    position: absolute;
+    z-index: -1;
+    bottom: 89%;
+    left: 95%;
+    color: rgb(199, 253, 255);
+    -webkit-text-stroke: 2px #b6fdff;
+    filter: drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3) drop-shadow(0 0 20px #1555a3);
+}
+
+footer {
+    width: 100%;
+    height: 60px;
+    color: white;
+    font-size: 7pt;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
