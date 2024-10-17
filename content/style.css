@@ -180,6 +180,25 @@ body {
     transform: translate(-50%, -50%) scale(1);
 }
 
+.settings {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 10pt;
+    opacity: 0.3;
+    gap: 4px;
+    margin-top: 20px;
+}
+
+.settings label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+    transition: 0.5s;
+}
+
 .luminescent{
     display: flex;
     height: 100%;

@@ -7,7 +7,6 @@
 
 let dataBase = [
     {
-        id: 0,
         name: "none"
     }
 ]
@@ -64,14 +63,16 @@ async function getAllUsers() {
 }
 
 async function init() {
-    await openDatabase(); // Ждем, пока база откроется
-    let users = await getAllUsers(); // Ждем получения всех пользователей
-    dataBase = users; // Обновляем базу данных
-    // Проверка на наличие более одного элемента
+    await openDatabase();
+    let users = await getAllUsers();
+    dataBase = users;
     saveStatus = dataBase.length >= 1;
-    console.log('Save status:', saveStatus); // Логируем статус
+    console.log('Save status:', saveStatus);
     create_page()
-    addProjectInDataBase()//запускаем возможность сохранять в избранное
+    addProjectInDataBase()
+    if(document.title === "profile") {
+        editStoreProject()
+    }
 }
 init();
 
@@ -92,7 +93,7 @@ function create_page(){
                 <div class="description"><p>${allProject[i].description}</p></div>
                 <div class="button">
                     <a href="pages_projects/item_page.html?name=${allProject[i].name}"><button>перейти</button></a>
-                    <label id="${allProject[i].id}" data-id="${allProject[i].id}" data-name="${allProject[i].name}"><i class="fa-solid fa-bookmark"></i></label>
+                    <label id="${allProject[i].name}"><i class="fa-solid fa-bookmark"></i></label>
                 </div>
             </div>
         </div>`
@@ -110,19 +111,22 @@ function create_page(){
                 <div class="description"><p>${allProject[i].description}</p></div>
                 <div class="button">
                     <a href="pages_projects/item_page.html?name=${allProject[i].name}"><button>перейти</button></a>
-                    <label id="${allProject[i].id}" data-id="${allProject[i].id}" data-name="${allProject[i].name}" data-href="${allProject[i].quick_start}"><i class="fa-solid fa-play"></i></label>
+                    <label class="play" id="${allProject[i].name}" data-href="${allProject[i].quick_start}"><i class="fa-solid fa-play"></i></label>
+                    <label class="trash" id="${allProject[i].name}" style="display: none"><i class="fa-regular fa-trash-can"></i></label>
                 </div>
             </div>
         </div>`);
                 }
             } else if (!saveStatus) {
                 let none = document.querySelector('.not_save')
+                let edit = document.querySelector('.settings')
                 none.style.display = "flex"
+                edit.style.display = "none"
             }
         }
 
         if(dataBase.some(item => item.name === allProject[i].name)){
-            const isSave = document.getElementById(`${allProject[i].id}`)
+            const isSave = document.getElementById(`${allProject[i].name}`)
             if(isSave){
                 isSave.style.color = "#fff"
                 isSave.style.opacity = "1"
@@ -172,16 +176,13 @@ function createItemPage(){
 }
 
 function addProjectInDataBase() {
-    // Сохранение проектов в избранное
     document.querySelectorAll('.button label').forEach(label => {
         label.addEventListener('click', function () {
-            const idProject = parseInt(this.getAttribute('data-id'), 10); // Преобразуем в число
-            const nameProject = this.getAttribute('data-name');
+            const nameProject = this.getAttribute('id');
             const href = this.getAttribute('data-href');
-            let currentProject = { id: idProject, name: nameProject };
+            let currentProject = { id: nameProject, name: nameProject };
 
-            // Проверяем, есть ли проект в базе данных
-            const projectExists = dataBase.some(item => item.id === currentProject.id);
+            const projectExists = dataBase.some(item => item.name === currentProject.name);
             let statusOperation = "none";
 
             console.log('Before:', dataBase);
@@ -189,14 +190,11 @@ function addProjectInDataBase() {
             if (!projectExists) {
                 dataBase.push(currentProject);
                 statusOperation = "add";
-                console.log(statusOperation);
-            } else if (!href) {
-                dataBase = dataBase.filter(item => item.id !== idProject);
+            } else if (projectExists && !href) {
+                dataBase = dataBase.filter(item => item.name !== nameProject);
                 statusOperation = "delete";
-                console.log(statusOperation);
             } else if (href) {
-                window.location.href = href;
-                console.log(statusOperation);
+                window.open(href, '_blank');
                 return;
             }
 
@@ -210,13 +208,13 @@ function addProjectInDataBase() {
                 let request
 
                 if(statusOperation === "add"){
-                    request = store.put(user); // Сохранение данных
+                    request = store.put(user);
                 } else if(statusOperation === "delete"){
-                    request = store.delete(user); // Удаление данных
+                    request = store.delete(user);
                 }
 
                 request.onsuccess = function() {
-                    updateProjectUI(idProject, statusOperation);
+                    updateProjectUI(nameProject, statusOperation);
                 };
 
                 request.onerror = function() {
@@ -224,8 +222,8 @@ function addProjectInDataBase() {
                 };
             }
             // Функция обновления UI (изменение стилей проекта)
-            function updateProjectUI(projectId, statusOperation) {
-                let projectLabel = document.getElementById(`${projectId}`);
+            function updateProjectUI(nameProject, statusOperation) {
+                let projectLabel = document.getElementById(`${nameProject}`);
                 if (statusOperation === "add") {
                     projectLabel.style.color = "#fff";
                     projectLabel.style.opacity = "1";
@@ -237,7 +235,7 @@ function addProjectInDataBase() {
             if(statusOperation === "add"){
                 saveOrDeleteUserData(currentProject);
             } else if(statusOperation === "delete"){
-                saveOrDeleteUserData(idProject);
+                saveOrDeleteUserData(nameProject);
             }
             console.log('After:', dataBase);
         });
