@@ -20,7 +20,6 @@ let editStatus = 'default'
 
 function editStoreProject (){
 
-
     editElement.addEventListener('click', function () {
         if (editStatus === 'default'){
             editStatus = 'edit'

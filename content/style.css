@@ -181,6 +181,7 @@ body {
 }
 
 .settings {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     color: white;
