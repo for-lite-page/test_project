@@ -22,71 +22,128 @@
 </div>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
  <script>
-        let saveStatus = false
+     let saveStatus = false
+     let db;
 
-        let db;
+     function openDatabase() {
+         return new Promise((resolve, reject) => {
+             let request = indexedDB.open('myDatabase', 2);
 
-        function openDatabase() {
-            return new Promise((resolve, reject) => {
-                let request = indexedDB.open('myDatabase', 1);
+             request.onupgradeneeded = function(event) {
+                 db = event.target.result;
 
-                request.onupgradeneeded = function(event) {
-                    let db = event.target.result;
-                    db.createObjectStore('users', { keyPath: 'id' }); // Создание хранилища
-                };
+                 if (!db.objectStoreNames.contains('users')) {
+                     db.createObjectStore('users', { keyPath: 'id' });
+                 }
+                 if (!db.objectStoreNames.contains('reindexStatus')) {
+                     db.createObjectStore('reindexStatus', { keyPath: 'status' });
+                 }
+             };
 
-                request.onsuccess = function(event) {
-                    db = event.target.result; // Открытие успешное, база доступна
-                    console.log('Database opened successfully');
-                    resolve();
-                };
-                request.onerror = function(event) {
-                    console.error('Database failed to open');
-                    reject('Database failed to open');
-                };
-            });
-        }
+             request.onsuccess = function(event) {
+                 db = event.target.result;
+                 console.log('Database opened successfully');
+                 resolve();
+             };
+             request.onerror = function(event) {
+                 console.error('Database failed to open');
+                 reject('Database failed to open');
+             };
+         });
+     }
 
-        async function getAllUsers() {
-            if (!db) {
-                console.error('Database not opened');
-                return;
-            }
+     async function getAllUsers() {
+         if (!db) {
+             console.error('Database not opened');
+             return;
+         }
 
-            let transaction = db.transaction('users', 'readonly');
-            let store = transaction.objectStore('users');
+         let transaction = db.transaction('users', 'readonly');
+         let store = transaction.objectStore('users');
 
-            let request = store.getAll(); // Получаем все данные
+         let request = store.getAll();
 
-            return new Promise((resolve, reject) => {
-                request.onsuccess = function() {
-                    console.log('All users:', request.result); // Выводим данные в консоль
-                    resolve(request.result);
-                };
+         return new Promise((resolve, reject) => {
+             request.onsuccess = function() {
+                 console.log('All users:', request.result);
+                 resolve(request.result);
+             };
 
-                request.onerror = function() {
-                    console.error('Failed to fetch user data');
-                    reject('Failed to fetch user data');
-                };
-            });
-        }
+             request.onerror = function() {
+                 console.error('Failed to fetch user data');
+                 reject('Failed to fetch user data');
+             };
+         });
+     }
 
-        async function init() {
-            await openDatabase();
-            let users = await getAllUsers();
-            dataBase = users;
-            saveStatus = dataBase.length >= 1;
-        }
-        init();
+     async function clearDB() {
+         if (!db) {
+             console.error('Database not opened');
+             return;
+         }
+
+         let transactionStatus = db.transaction('reindexStatus', 'readwrite');
+         let storeStatus = transactionStatus.objectStore('reindexStatus');
+
+         let request = storeStatus.getAll();
+
+         return new Promise((resolve, reject) => {
+             request.onsuccess = function() {
+                 if (request.result.length > 0) {
+                     console.log("reindex has been finished with status 200")
+                     resolve(request.result);
+                 } else {
+                     let transactionUser = db.transaction('users', 'readwrite');
+                     let storeUser = transactionUser.objectStore('users');
+
+                     let clearUser = storeUser.clear()
+
+                     clearUser.onsuccess = function() {
+
+                         let transactionStatus = db.transaction('reindexStatus', 'readwrite');
+                         let storeStatus = transactionStatus.objectStore('reindexStatus');
+
+                         let addStatus = storeStatus.add({status: 200})
+
+                         addStatus.onsuccess = function() {
+                             console.log("Reindex finished and status added");
+                             resolve();
+                         }
+                         addStatus.onerror = function() {
+                             console.error("Failed to add reindex status");
+                             reject('Failed to add reindex status');
+                         };
+                     }
+                     clearUser.onerror = function() {
+                         console.log("Reindex not finished")
+                         reject('Failed to clear users');
+                     }
+                 }
+             };
+             request.onerror = function() {
+                 console.error('Failed to fetch user data');
+                 reject('Failed to fetch user data');
+             };
+         });
+     }
+
+     async function init() {
+         await openDatabase();
+         await clearDB()
+         let users = await getAllUsers();
+         dataBase = users;
+         saveStatus = dataBase.length >= 1;
+     }
+     init();
 
 
-        setTimeout(function() {
-            if(!saveStatus){
-                window.location.href = 'content/main_page.html';
-            } else {
-                window.location.href = 'content/profile.html';
-            }
-        }, 3000);
+     setTimeout(function() {
+         if(!saveStatus){
+             window.location.href = 'content/main_page.html';
+         } else {
+             window.location.href = 'content/profile.html';
+         }
+     }, 3000);
 
  </script>
 </body>
