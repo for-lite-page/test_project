@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>proxy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../tabs.css">
+    <link rel="stylesheet" href="partner_style.css">
+    <script src="../Talisker.js"></script>
+</head>
+<body>
+<div class="tabs">
+    <input id="home" type="radio" name="tabsMenu">
+    <input id="partner" type="radio" name="tabsMenu">
+    <input id="support" type="radio" name="tabsMenu">
+    <input id="profile" type="radio" name="tabsMenu">
+    <div class="buttons_tabs">
+        <label for="home" id="home_button" data-href="../main_page.html"><i class="fa-solid fa-house"></i></label>
+        <label for="partner" id="partner_button"><i class="fa-brands fa-sketch"></i></label>
+        <label for="support" id="support_button" data-href="../support.html"><i class="fa-sharp fa-solid fa-circle-info"></i></label>
+        <label for="profile" id="profile_button" data-href="../profile.html"><i class="fa-solid fa-user"></i></label>
+    </div>
+</div>
+
+
+<div class="main">
+    <div class="container">
+        <p class="description-0">Увеличь свой дроп</p>
+        <div class="logo">
+            <img src="../logos/logoproxy2.png" alt=" ">
+            <p class="x">X</p>
+            <img class="void" src="../load_screen/лови%20чмо.png" alt=" ">
+        </div>
+
+        <p class="promo">ПРОМО</p>
+        <p class="description">Используйте промокод что бы получить скидку 5% на покупку прокси. Нажмите на кнопку ниже что бы скопировать код</p>
+
+        <div class="promo-button" data-target="copy">
+            <div class="none1"></div>
+            <p>VOID</p>
+            <label class="copy-none"><i class="fa-regular fa-clipboard"></i></label>
+            <label class="copy-yes" style="display: none"><i class="fa-regular fa-circle-check"></i></label>
+        </div>
+
+        <div class="promo-button" data-target="link">
+            <div class="none2"></div>
+            <p>Proxys</p>
+            <label><i class="fa-solid fa-arrow-up-right-from-square"></i></label>
+        </div>
+    </div>
+    <p class="H-description">Зачем нужен прокси</p>
+    <div class="ad-description">
+        <div class="spaceship-block">
+            <img src="../logos/spaceship.png" class="spaceship" alt=" ">
+            <div class="ship-path"></div>
+        </div>
+        <div class="description-block">
+            <div class="argument">
+                <div class="icon-argument">-</div>
+                <p class="text-argument">Создавайте столько аккаунтов в проектах, сколько вам нужно</p>
+            </div>
+            <div class="argument">
+                <div class="icon-argument">-</div>
+                <p class="text-argument">Имитируйте активность из разных уголков планеты, выбирая из множесва серверов</p>
+            </div>
+            <div class="argument">
+                <div class="icon-argument">-</div>
+                <p class="text-argument">Ваша ферма аккаунтов всегда остаётся незамеченной. Полуйчате дроп на каждый профиль, не боясь бана</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.querySelectorAll('.promo-button').forEach(button => {
+        button.addEventListener('click', function (){
+            let dataTarget = button.getAttribute('data-target')
+            let copyButton = document.querySelector('.copy-yes')
+            let beforeCopyButton = document.querySelector('.copy-none')
+
+            if (dataTarget === 'copy') {
+                copyButton.style.display = 'flex'
+                copyButton.style.color = "#84a3a3"
+                beforeCopyButton.style.display = 'none'
+                const textToCopy = 'void';
+                navigator.clipboard.writeText(textToCopy)
+            }
+            if(dataTarget === "link") {
+                window.open('https://proxys.io/?refid=127858', '_black')
+            }
+        })
+    })
+
+
+    document.querySelectorAll('.buttons_tabs label').forEach(label => {
+        label.addEventListener('click', function() {
+            const href = this.getAttribute('data-href');
+            if (href) {
+                window.location.href = href;
+            }
+        });
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            if (document.title === "home") {
+                document.getElementById("home_button").style.color = "#fff";
+                document.getElementById("home_button").style.opacity = "1";
+            } else if (document.title === "support") {
+                document.getElementById("support_button").style.color = "#fff";
+                document.getElementById("support_button").style.opacity = "1";
+            } else if (document.title === "profile") {
+                document.getElementById("profile_button").style.color = "#fff";
+                document.getElementById("profile_button").style.opacity = "1";
+            } else if(document.title === "proxy") {
+                document.getElementById("partner_button").style.colir = "#fff"
+                document.getElementById("partner_button").style.opacity = "1"
+            }
+        }, 80);
+    });
+</script>
+</body>
+</html>

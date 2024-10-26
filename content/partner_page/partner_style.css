@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jura', sans-serif;
+}
+
+body, html {
+    margin: 5px 0 0 0;
+    background-color: #0a131c;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../logos/bacground.png');
+    background-size: cover;        /* Растягивает изображение, сохраняя пропорции */
+    background-repeat: no-repeat;  /* Запрещает повторение изображения */
+    background-attachment: fixed; /* Делает фон прокручиваемым */
+    background-position: center;   /* Центрирует изображение */
+}
+
+p {
+    color: white;
+}
+
+body .main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    border: 1px rgba(255, 255, 255, 0.22) solid;
+    border-radius: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+    backdrop-filter: blur(5px);
+    flex-direction: column;
+}
+
+.logo {
+    margin: 15px 0 15px 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.void {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin: 0 0 6px 0;
+}
+.x {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 20pt;
+}
+
+.promo {
+    font-size:21pt ;
+}
+
+.description-0 {
+    margin: 15px 0 0 0;
+    text-align: center;
+    font-size: 18pt;
+}
+.description {
+    text-align: center;
+    font-size: 7pt;
+    width: 93%;
+}
+
+.description-2 {
+    text-align: center;
+    font-size: 8pt;
+}
+
+.promo-button{
+    cursor: pointer;
+    margin: 15px 0 0 0;
+    color: white;
+    background-color: rgba(29, 33, 60, 0.94);
+    border-radius: 8px;
+    width: 120px;
+    height:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.promo-button label {
+    color: #757b73;
+}
+
+.H-description {
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    font-size: 16pt;
+}
+
+.ad-description {
+    padding: 20px;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+
+}
+
+.spaceship-block {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.spaceship-block::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.48);
+    transform: translateX(-50%);
+ }
+
+.spaceship {
+    width: 20px;
+    height: 30px;
+}
+
+.description-block {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100%;
+    /*background-color: #1d1e47;*/
+    gap: 30px
+}
+
+.argument {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-argument {
+    /*background-color: red;*/
+    color: white;
+    display: flex;
+    width: 20px;
+    justify-content: left;
+}
+
+.text-argument {
+    /*background-color: #605cb1;*/
+    width: 100%;
+    font-size: 11pt;
+    /*text-align: center;*/
+}
