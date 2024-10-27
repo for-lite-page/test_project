@@ -87,8 +87,13 @@
                 copyButton.style.display = 'flex'
                 copyButton.style.color = "#84a3a3"
                 beforeCopyButton.style.display = 'none'
-                const textToCopy = 'void';
-                navigator.clipboard.writeText(textToCopy)
+
+                let textarea = document.createElement("textarea");
+                textarea.value = "void";
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
             }
             if(dataTarget === "link") {
                 window.open('https://proxys.io/?refid=127858', '_black')
