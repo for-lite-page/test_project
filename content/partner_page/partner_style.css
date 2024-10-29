@@ -36,7 +36,7 @@ body .main {
 }
 
 .container {
-    border: 1px rgba(255, 255, 255, 0.22) solid;
+    border: 1px rgba(120, 135, 177, 0.2) solid;
     border-radius: 20px;
     display: flex;
     justify-content: start;
