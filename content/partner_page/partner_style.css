@@ -41,28 +41,28 @@ body .main {
     display: flex;
     justify-content: start;
     align-items: center;
-    width: 250px;
-    height: 300px;
+    width: 310px;
+    height: 320px;
     backdrop-filter: blur(5px);
     flex-direction: column;
 }
 
 .logo {
     margin: 15px 0 15px 0;
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
 .logo img {
-    height: 50px;
+    height: 60px;
 }
 
 .void {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 60px;
     margin: 0 0 6px 0;
 }
 .x {
@@ -73,18 +73,18 @@ body .main {
 }
 
 .promo {
-    font-size:15pt ;
+    font-size: 15pt ;
 }
 
 .description-0 {
     margin: 8px 0 8px 0;
     text-align: center;
-    font-size: 16pt;
+    font-size: 18pt;
 }
 .description {
     text-align: center;
-    font-size: 8.5pt;
-    width: 95%;
+    font-size: 12pt;
+    width: 92%;
 }
 
 .description-2 {
