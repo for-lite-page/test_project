@@ -15,8 +15,6 @@
 
 </head>
 <body>
-<div class="alert"><p>скопировано</p></div>
-
 <div class="tabs">
     <input id="home" type="radio" name="tabsMenu">
     <input id="partner" type="radio" name="tabsMenu">
@@ -40,12 +38,20 @@
         </div>
         <div class="donat">
             <div class="usdt">
-                <div class="сurrency"><p>USDT(TRC20):</p></div>
-                <div class="address"><p>TNDUj3JEfQDvjrT1SgV6vviqJDAfX6R1Nf</p></div>
+                <p class="сurrency">USDT(TRC20):</p>
+                <div class="address">
+                    <p>TNDUj3JEfQDvjrT1SgV6vviqJDAfX6R1Nf</p>
+                    <label class="copy-none"><i class="fa-regular fa-clipboard"></i></label>
+                    <label class="copy-yes" style="display: none"><i class="fa-regular fa-circle-check"></i></label>
+                </div>
             </div>
             <div class="trx">
-                <div class="сurrency"><p>TRX(TRC20):</p></div>
-                <div class="address"><p>TNDUj3JEfQDvjrT1SgV6vviqJDAfX6R1Nf</p></div>
+                <p class="сurrency">TRX(TRC20):</p>
+                <div class="address">
+                    <p>TNDUj3JEfQDvjrT1SgV6vviqJDAfX6R1Nf</p>
+                    <label class="copy-none"><i class="fa-regular fa-clipboard"></i></label>
+                    <label class="copy-yes" style="display: none"><i class="fa-regular fa-circle-check"></i></label>
+                </div>
             </div>
         </div>
     </div>
@@ -71,7 +77,7 @@
         </div>
         <div class="item">
             <div class="icon" id="tg2">
-                <label class="tg"data-href="https://t.me/void_updates_channel"><i class="fa-brands fa-telegram"></i></label>
+                <label class="tg" data-href="https://t.me/void_updates_channel"><i class="fa-brands fa-telegram"></i></label>
             </div>
             <p class="name">VOID</p>
         </div>
@@ -82,31 +88,30 @@
 </div>
 <script src="mainScript.js"></script>
 <script>
-    let blocks = document.getElementsByClassName("address");
-    let content = document.getElementsByClassName('alert');
-
-    for (let i = 0; i < blocks.length; i++) {
-        blocks[i].addEventListener("click", function() {
+    document.querySelectorAll('.address').forEach(label => {
+        label.addEventListener('click', function() {
             let textarea = document.createElement("textarea");
             textarea.value = this.textContent;
             document.body.appendChild(textarea);
             textarea.select();
             document.execCommand("copy");
             document.body.removeChild(textarea);
-            for (let i = 0; i < content.length; i++) {
-                content[i].style.display = 'flex';
 
-                (function(index) {
-                    setTimeout(function() {
-                        content[index].style.display = 'none';
-                    }, 1580);
-                })(i);
-            }
-        });
-    }
+            let copyNone = this.querySelector('.copy-none')
+            let copyYes = this. querySelector('.copy-yes')
 
-    let labels = document.querySelectorAll('.media .item .icon label');
+            copyYes.style.display = "flex"
+            copyYes.style.color = "#acd3d3"
 
+            copyNone.style.display = "none"
+            copyNone.style.color = "#acd3d3"
+
+        })
+    })
+
+
+
+    let labels = document.querySelectorAll('.icon label');
     labels.forEach(label => {
         label.addEventListener('click', function() {
             let href = label.getAttribute('data-href');

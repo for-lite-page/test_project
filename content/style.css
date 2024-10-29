@@ -40,7 +40,7 @@ body {
 }
 
 .item{
-    border: 1px solid #8f89b9;
+    border: 1px rgba(255, 255, 255, 0.29) solid;
     display: flex;
     align-items: center;
     height: 180px;

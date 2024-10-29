@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Tektur", sans-serif;
+    font-family: 'Jura', sans-serif;
 }
 
 body{
@@ -18,18 +18,6 @@ p {
     color: white;
 }
 
-.alert {
-    position: fixed;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    bottom: 46%;
-    z-index: 999;
-    height: 30px;
-    width: 120px;
-    background-color: #181f34;
-    border-radius: 5px;
-}
 .stars {
     position: fixed;
     top: 0;
@@ -39,9 +27,10 @@ p {
     z-index: -1; /* Помещаем звезды за все остальные элементы */
     background-color: #0b0a0a; /* Цвет фона, черный для эффекта ночного неба */
 }
+
 .content {
     padding: 0 50px 0 50px;
-
+    backdrop-filter: blur(1px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,53 +48,52 @@ p {
     padding: 0;
     border: none;
     font-size: 70pt;
-    font-family: 'Jura', sans-serif;
 }
 
 .content .author p {
-    font-family: 'Jura', sans-serif;
-    font-size: 8pt;
+    font-size: 9pt;
     margin-bottom: 20px;
 }
 
-.content .notification {
-    border: 1px solid #8f89b9;
+.notification {
+    width: 320px;
+    border: 1px solid rgba(134, 128, 161, 0.47);
     border-radius: 8px;
     padding: 10px;
     background: linear-gradient(135deg, rgba(17, 19, 18, 0.692), rgba(0, 0, 0, 0.11));
     backdrop-filter: blur(1px);
     margin-bottom: 35px;
-
 }
 
-.content .notification .description{
-    font-size: 8pt;
+.notification .description{
+    font-size: 10pt;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 
-.content .notification .donat .usdt {
+.usdt, .trx {
     font-size: 10pt;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 6px;
-}
-
-.content .notification .donat .trx {
-    font-size: 10pt;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 6px 0 0 0;
+    gap: 3px;
 }
 
 .address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    gap: 5px;
     padding: 4px;
     background:  #181f34;
     border-radius: 5px;
     margin-bottom: 10px;
+    color: #757b73;
+    font-size: 11pt;
 }
 
 .content .media {
@@ -116,13 +104,13 @@ p {
     margin-bottom: 90px;
 }
 
-.content .media .item {
+.media .item {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.content .media .item .icon {
+.item .icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,7 +120,7 @@ p {
     font-size: 2em;
 }
 
-.content .media .item p{
+.item p{
     font-size: 8pt;
 }
 
@@ -183,5 +171,4 @@ footer {
     justify-content: center;
     align-items: end;
     margin-bottom: 70px;
-
 }
