@@ -40,7 +40,7 @@ body {
 }
 
 .item{
-    border: 1px rgba(255, 255, 255, 0.29) solid;
+    border: 1px rgba(120, 135, 177, 0.2) solid;
     display: flex;
     align-items: center;
     height: 180px;
@@ -182,6 +182,8 @@ body {
 
 .settings {
     cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
     display: flex;
     justify-content: center;
     color: white;

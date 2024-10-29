@@ -57,7 +57,7 @@ p {
 
 .notification {
     width: 320px;
-    border: 1px solid rgba(134, 128, 161, 0.47);
+    border: 1px solid rgba(120, 135, 177, 0.2);
     border-radius: 8px;
     padding: 10px;
     background: linear-gradient(135deg, rgba(17, 19, 18, 0.692), rgba(0, 0, 0, 0.11));
