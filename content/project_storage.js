@@ -19,7 +19,7 @@ let allProject = [
     {
         name: "OKX-Racer",
         filterClass: "all tap",
-        logo: "https://pbs.twimg.com/profile_banners/1360679095655424003/1721652281/1080x360",
+        logo: "logos/okx-racer.jpg",
         description: "⚡Официальная перспективная тапалка от биржи OKX",
         quick_start: "https://t.me/OKX_official_bot/OKX_Racer?startapp=linkCode_97456106"
     },
@@ -82,7 +82,7 @@ let allProject = [
     {
         name: "Wizzwoods",
         filterClass: "all tap",
-        logo: "https://pbs.twimg.com/profile_banners/1751504118680829952/1724058222/1500x500",
+        logo: "https://pbs.twimg.com/profile_banners/1751504118680829952/1727490143/1080x360",
         description: "Прокачиваем гномов, которые добывают токены xWIZZ",
         quick_start: "https://t.me/WizzwoodsBot/app?startapp=rp_357962"
     },
@@ -132,7 +132,7 @@ let allProject = [
     {
         name: "vertus",
         filterClass: "all tap",
-        logo: "https://pbs.twimg.com/card_img/1834231220424658944/keWWF2d8?format=jpg&name=small",
+        logo: "logos/vertus.png",
         description: "🏅Ещё один проект в телеграме - Vertus",
         quick_start: "https://t.me/vertus_app_bot/app?startapp=6268615078"
     },
@@ -164,13 +164,13 @@ let allProject = [
         description: "⚡Тапалка с реальной криптой NOTMEME",
         quick_start: "https://t.me/NOTMEMEAppBot?start=n40ufi"
     },
-    {
-        name: "lost-dogs",
-        filterClass: "all tap",
-        logo: "https://pbs.twimg.com/profile_banners/1628037245134413824/1678133175/1500x500",
-        description: "⚡Играем в игру от Notcoin - Lost Dogs",
-        quick_start: "https://t.me/lost_dogs_bot/lodoapp?startapp=ref-u_6268615078"
-    },
+    // {
+    //     name: "lost-dogs",
+    //     filterClass: "all tap",
+    //     logo: "https://pbs.twimg.com/profile_banners/1628037245134413824/1678133175/1500x500",
+    //     description: "⚡Играем в игру от Notcoin - Lost Dogs",
+    //     quick_start: "https://t.me/lost_dogs_bot/lodoapp?startapp=ref-u_6268615078"
+    // },
     {
         name: "PokeyQuest",
         filterClass: "all tap",
@@ -231,7 +231,7 @@ let allProject = [
     {
         name: "tomarket",
         filterClass: "all tap",
-        logo: "https://pbs.twimg.com/profile_banners/1825730273457381376/1724127668/1500x500",
+        logo: "data:image/png;base64,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",
         description: "⚡Собираем томаты в тапалке",
         quick_start: "https://t.me/Tomarket_ai_bot/app?startapp=00005U46"
     },
@@ -364,7 +364,7 @@ let allProject = [
     {
         name: "hot-near",
         filterClass: "all tap",
-        logo: "https://hotdao.ai/logo.fe84b0e2.svg",
+        logo: "https://hotdao.ai/images/logo.svg",
         description: "⚡️Получаем токены HOT от Near Wallet",
         quick_start: "https://t.me/herewalletbot/app?startapp=3661467"
     },

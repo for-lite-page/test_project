@@ -40,12 +40,12 @@ body {
 }
 
 .item{
-    border: 1px rgba(158, 153, 221, 0.2) solid;
+    border: 1px rgba(134, 184, 236, 0.25) solid;
     display: flex;
     align-items: center;
     height: 180px;
     min-width: 140px;
-    background: linear-gradient(135deg, rgba(54, 98, 106, 0.1), rgba(28, 57, 74, 0.1));
+    background: rgba(28, 57, 74, 0.1);
     backdrop-filter: blur(1px);
     padding: 10px;
     border-radius: 8px;
@@ -109,7 +109,8 @@ body {
     height: 100%;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to left, #303161 0%, #37365e 50%, #303161 100%);
+    /*background: linear-gradient(to left, #303161 0%, #37365e 50%, #303161 100%);*/
+    background: #2e345a;
     border-radius: 10px;
     }
 
