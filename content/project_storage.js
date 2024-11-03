@@ -1,5 +1,4 @@
 // {
-//     id: 0,
 //     name: "name",
 //     filterClass: "all tap site",
 //     logo: "src",
@@ -12,7 +11,7 @@ let allProject = [
     {
         name: "OKX",
         filterClass: "all site",
-        logo: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAABICAQAAADSOpYzAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAFiUAABYlAUlSJPAAAAAHdElNRQfmBwMNKhI4Vg/yAAABMklEQVR42u3aQW6DMBBAUZyT5eSFE/RInS5psOKx8Scq0n9ZNXjA+VE3VpZFkiRJkiShYo0rrYPPWyf3+3VYXZL138nTuudLxLVfVCmHrcXY+uqjteejPF7/XH5G1teXe+ebt1E/Q0IMCTEkxJAQQ0IMCTEkxJAQQ0IMCTEkxJCQ+4XcBq+Orj87n54oPlv3iWc2Xk3A55tzZs8rd+l55OT54PB5ZLrhMjd/2M3keeXufv/a/5QhIYaEGBJiSIghIYaEGBJiSIghIYaEGBJiSEgaMjtG+/B+tw/f8eVqlPq1X7xYlX5wfTXfPj/095Hv1tdfRPLJ/X3kvRkSYkiIISGGhBgSYkiIISGGhBgSYkiIISGGhDwuOOH7a+t4p//qmflticYrf946OS9JkiRJkk75BUgSur6QrNyYAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIyLTA3LTAzVDEzOjQyOjE4KzAwOjAwKpbwNQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wNy0wM1QxMzo0MjoxOCswMDowMFvLSIkAAAAASUVORK5CYII=",
+        logo: "logos/OKX.png",
         description: "⚡Получаем до 50$ от OKX (для новых пользователей)",
         quick_start: "https://www.okx.com/join/COOPERXGOD"
     },
@@ -24,17 +23,101 @@ let allProject = [
         quick_start: "https://t.me/OKX_official_bot/OKX_Racer?startapp=linkCode_97456106"
     },
     {
+        name: "Vooi",
+        filterClass: "all tap",
+        logo: "logos/Vooi.png",
+        description: "⚡Годная тапалка с поддержкой от Binance - Vooi",
+        quick_start: "https://t.me/VooiAppBot/vooi?startapp=frenID101D61P"
+    },
+    {
+        name: "Farm-Frens",
+        filterClass: "all tap",
+        logo: "logos/Farm-Frens.png",
+        description: "🌾 Играем в ферму в телеграме - Farm Frens",
+        quick_start: "https://t.me/FarmfrensBot?start=6268615078"
+    },
+    {
+        name: "Time-Farm",
+        filterClass: "all tap",
+        logo: "logos/Time-Farm.png",
+        description: "🏆Собираем токены $SECOND в тапалке",
+        quick_start: "https://t.me/TimeFarmCryptoBot?start=pRKPgMPdpx1PzDP3"
+    },
+    {
+        name: "BIT",
+        filterClass: "all tap",
+        logo: "logos/BIT.png",
+        description: "🏆Получаем поинты за скорость вашего интернета и ждём дроп от BIT",
+        quick_start: "https://t.me/bitapp/app?startapp=ref_NjI2ODYxNTA3OA=="
+    },
+    {
+        name: "DRFT",
+        filterClass: "all tap",
+        logo: "logos/DRFT.png",
+        description: "🏆Получаем токены DRFT в тапалке TonTon Games",
+        quick_start: "https://t.me/drft_party_bot/game?startapp=6268615078"
+    },
+    {
+        name: "PAWS",
+        filterClass: "all tap",
+        logo: "logos/PAWS.png",
+        description: "🏆Новая тапалка по типу DOGS - PAWS",
+        quick_start: "https://t.me/drft_party_bot/game?startapp=6268615078"
+    },
+    {
+        name: "EtherDrops",
+        filterClass: "all tap",
+        logo: "logos/EtherDrops.png",
+        description: "🏆Получаем дроп от проекта EtherDrops",
+        quick_start: "https://t.me/drops/app?startapp=ref_PIYOB"
+    },
+    {
+        name: "Tokens-for-age-tg",
+        filterClass: "all tap",
+        logo: "logos/Tokens-for-age-tg.png",
+        description: "🏆Получаем токены в проектах за возраст вашего аккаунта",
+        quick_start: "https://t.me/crypto_cooper/1655"
+    },
+    {
+        name: "Fabrika",
+        filterClass: "all tap",
+        logo: "logos/Fabrika.png",
+        description: "🏆Фармим в тапалке от Дурова (не это не точно)",
+        quick_start: "https://t.me/fabrika/app?startapp=ref_986895"
+    },
+    {
+        name: "Hexacore",
+        filterClass: "all tap",
+        logo: "logos/Hexacore.png",
+        description: "🏆Фармим поинты AGO, которые потом будут конвертированы в токены HXC",
+        quick_start: "https://t.me/HexacoinBot/wallet?startapp=6268615078"
+    },
+    {
+        name: "PiggyLand",
+        filterClass: "all tap",
+        logo: "logos/PiggyLand.png",
+        description: "🏆Разводим свинок и получает токены",
+        quick_start: "https://t.me/piggyland_bot/app?startapp=80001148"
+    },
+    {
+        name: "BybitCoinsweeper",
+        filterClass: "all tap",
+        logo: "logos/BybitCoinsweeper.png",
+        description: "🏆Тапалка от Bybit",
+        quick_start: "https://t.me/BybitCoinsweeper_Bot?start=referredBy=6268615078"
+    },
+    {
         name: "Webtransfer",
         filterClass: "all tap",
         logo: "https://pbs.twimg.com/profile_banners/236635829/1714166353/1500x500",
-        description: "Получаем бонусные 50$ и ложим их под большие проценты",
+        description: "🏆Получаем бонусные 50$ и ложим их под большие проценты",
         quick_start: "https://t.me/Webtransfer_apps_bot/webtransfer?startapp=6268615078"
     },
     {
         name: "Bool-Network",
         filterClass: "all tap",
         logo: "https://pbs.twimg.com/profile_banners/1562994504419778560/1723534752/1500x500",
-        description: "Фармим токены от Bool Network",
+        description: "🏆Фармим токены от Bool Network",
         quick_start: "https://t.me/boolfamily_bot/join?startapp=PKJFZ"
     },
     {
@@ -98,21 +181,21 @@ let allProject = [
         name: "DAWN",
         filterClass: "all site",
         logo: "https://pbs.twimg.com/profile_banners/1743307828222140421/1722982920/1500x500",
-        description: "Копим поинты от DAWN",
+        description: "🏆Копим поинты от DAWN",
         quick_start: "https://chromewebstore.google.com/detail/dawn-validator-chrome-ext/fpdkjdnhkakefebpekbdhillbhonfjjp"
     },
     {
         name: "GOAT-Gaming",
         filterClass: "all tap",
         logo: "https://pbs.twimg.com/profile_banners/1783745929088241664/1717732630/1500x500",
-        description: "Фармим токены CROWN от GOAT Gaming",
+        description: "🏆Фармим токены CROWN от GOAT Gaming",
         quick_start: "https://t.me/goatgamingbot/goatgaming?startapp=ref_20EQKY"
     },
     {
         name: "Event-Horizon",
         filterClass: "all tap",
         logo: "https://pbs.twimg.com/profile_banners/1788948700049321984/1715671404/1500x500",
-        description: "Получаем NFT в тапалке от DEX биржи",
+        description: "🏆Получаем NFT в тапалке от DEX биржи",
         quick_start: "https://t.me/HorizonLaunch_bot/HorizonLaunch?startapp=6268615078"
     },
     {
